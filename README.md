@@ -16,10 +16,10 @@ MindGap AI is a hackathon-ready full-stack application designed to detect studen
 - `frontend/src/App.jsx`: Main interface logic.
 - `frontend/src/components/`: Modular UI components.
 
-## 💡 Hackathon Tips
+## 💡 Hackathon Demo Tips
 - **Groq Prompting**: We use `llama-3.3-70b-versatile` for low latency and high-quality responses.
-- **RAG**: Chunks are stored in a local FAISS index for lightning-fast retrieval.
 - **Micro-learning**: The system detects user level (beginner/adv) and adjusts the lesson depth.
+- **RAG**: Chunks are stored in a local FAISS index for lightning-fast retrieval.
 
 ## Features
 - 🏠 **Home**: Topic-based learning initiation.
