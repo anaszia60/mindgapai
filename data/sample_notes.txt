@@ -1,0 +1,17 @@
+MindGap AI Sample Notes: Introduction to Artificial Intelligence
+
+Artificial Intelligence (AI) is a branch of computer science that aims to create machines capable of performing tasks that typically require human intelligence. This includes reasoning, learning, problem-solving, perception, and language understanding.
+
+Machine Learning (ML) is a subset of AI that focuses on the development of algorithms that allow computers to learn from and make predictions based on data. Unlike traditional programming, where rules are explicitly defined, ML models find patterns in data and improve over time.
+
+Deep Learning is a further subset of ML based on artificial neural networks with multiple layers (hence "deep"). These networks are inspired by the structure of the human brain.
+
+Generative AI, like Large Language Models (LLMs), is a type of AI that can create new content, such as text, images, or music. These models are trained on vast amounts of data to predict the next token in a sequence.
+
+Knowledge Gaps in Learning:
+Often, students struggle with advanced concepts because they have "gaps" in their foundational knowledge. For example, understanding Neural Networks requires a solid grasp of Linear Algebra and Calculus.
+
+MindGap AI helps by:
+1. Identifying these gaps through interactive quizzes.
+2. Providing micro-lessons that explain the missing links.
+3. Keeping track of weak topics for reinforced learning.
