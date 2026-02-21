@@ -7,6 +7,8 @@ import Dashboard from './components/Dashboard';
 import { Search, Loader2, BookOpen, Brain, Sparkles } from 'lucide-react';
 import axios from 'axios';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 function App() {
   const [activeTab, setActiveTab] = useState('home');
   const [topic, setTopic] = useState('');
@@ -24,10 +26,10 @@ function App() {
     setQuiz(null);
 
     try {
-      const lessonRes = await axios.post('http://localhost:5000/api/lesson', { topic });
+      const lessonRes = await axios.post(`${API_BASE_URL}/api/lesson`, { topic });
       setLesson(lessonRes.data.lesson);
 
-      const quizRes = await axios.post('http://localhost:5000/api/quiz', { topic });
+      const quizRes = await axios.post(`${API_BASE_URL}/api/quiz`, { topic });
       // Assuming quiz returns { questions: [...] }
       setQuiz(quizRes.data.questions || quizRes.data);
     } catch (err) {
@@ -39,7 +41,7 @@ function App() {
 
   const onQuizComplete = async (score, total) => {
     try {
-      await axios.post('http://localhost:5000/api/save-performance', {
+      await axios.post(`${API_BASE_URL}/api/save-performance`, {
         topic,
         score,
         total,

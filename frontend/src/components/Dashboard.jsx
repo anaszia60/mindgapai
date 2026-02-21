@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { TrendingUp, AlertTriangle, History, Star } from 'lucide-react';
 import axios from 'axios';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 const Dashboard = () => {
     const [stats, setStats] = useState({ weak_topics: [], history: [] });
     const [loading, setLoading] = useState(true);
@@ -9,7 +11,7 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/stats');
+                const response = await axios.get(`${API_BASE_URL}/api/stats`);
                 setStats(response.data);
             } catch (error) {
                 console.error('Error fetching stats:', error);
@@ -59,8 +61,8 @@ const Dashboard = () => {
                                 <div className="flex justify-between items-start mb-2">
                                     <h4 className="font-bold">{item.topic}</h4>
                                     <span className={`text-xs font-bold px-2 py-1 rounded-md uppercase ${item.level === 'beginner' ? 'bg-green-500/10 text-green-500' :
-                                            item.level === 'intermediate' ? 'bg-blue-500/10 text-blue-500' :
-                                                'bg-purple-500/10 text-purple-500'
+                                        item.level === 'intermediate' ? 'bg-blue-500/10 text-blue-500' :
+                                            'bg-purple-500/10 text-purple-500'
                                         }`}>
                                         {item.level}
                                     </span>
