@@ -1,3 +1,12 @@
+---
+title: MindGap AI
+emoji: 🧠
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+pinned: false
+---
+
 # MindGap AI - Adaptive Learning Companion
 
 MindGap AI is a hackathon-ready full-stack application designed to detect student knowledge gaps and generate personalized micro-lessons.
