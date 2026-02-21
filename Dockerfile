@@ -9,14 +9,14 @@ RUN apt-get update && apt-get install -y \
     liblapack-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements and install
-COPY requirements.txt .
+# Copy requirements from backend folder and install
+COPY backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application
-COPY . .
+# Copy the backend code
+COPY backend/ .
 
-# Create uploads directory
+# Create uploads directory inside /app
 RUN mkdir -p uploads && chmod 777 uploads
 
 # Command to run the application
