@@ -7,7 +7,8 @@ from rag_engine import RAGEngine
 import json
 
 app = Flask(__name__)
-CORS(app)
+# Enable CORS for all routes and origins
+CORS(app, resources={r"/api/*": {"origins": "*"}}, supports_credentials=True)
 app.config['UPLOAD_FOLDER'] = 'uploads'
 
 # Ensure upload folder exists
