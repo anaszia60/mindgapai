@@ -1,9 +1,3 @@
-# Updated MindGap AI files with voice-to-voice conversation
-# (using Whisper for STT + gTTS for TTS + streamlit-audiorec)
-
-## 1. README.md
-
-```markdown
 ---
 title: MindGap AI
 emoji: 🧠
@@ -17,25 +11,49 @@ pinned: false
 license: apache-2.0
 ---
 
-# MindGap AI - Adaptive Learning Companion with Voice Chat
+# MindGap AI - Adaptive Learning Companion
 
-Detects knowledge gaps, generates personalized micro-lessons and supports **voice-to-voice conversation** using free models.
+MindGap AI is a hackathon-ready application designed to detect student knowledge gaps and generate personalized micro-lessons using RAG and Streamlit.
 
 ## Tech Stack
-- Frontend/Backend: Streamlit
-- Vector DB: FAISS (local) or Pinecone (optional)
-- Embeddings: sentence-transformers/all-MiniLM-L6-v2
-- LLM: Groq (llama-3.3-70b-versatile)
-- STT: openai-whisper (base model)
-- TTS: gTTS (Google Translate TTS)
-- Voice recording: st-audiorec component
-- Database: SQLite
-- OCR: pytesseract (images)
+- **Frontend/Backend**: Streamlit
+- **Vector Search**: FAISS
+- **Embeddings**: Sentence-Transformers (`all-MiniLM-L6-v2`)
+- **LLM**: Groq API (`llama-3.3-70b-versatile`)
+- **Database**: SQLite (Performance tracking)
 
-## Quick Start (Local)
+## 📂 Project Structure
+- `app.py`: Main Streamlit application.
+- `rag_engine.py`: Core RAG logic.
+- `database.py`: SQLite storage.
+- `requirements.txt`: Project dependencies.
 
-```bash
-# Install system dependencies (important for whisper & audio)
-sudo apt update && sudo apt install -y ffmpeg tesseract-ocr libtesseract-dev
+## 🚀 Quick Start (Local)
 
-pip install -r requirements.txt
+1. **Install Dependencies**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+2. **Environment Variables**:
+   Create a `.env` file or set the environment variable:
+   ```env
+   GROQ_API_KEY=your_key_here
+   ```
+
+3. **Run**:
+   ```bash
+   streamlit run app.py
+   ```
+
+## 🌍 Deployment (Hugging Face Spaces)
+The app is optimized for Hugging Face Spaces. 
+1. Create a Space with the **Streamlit SDK**.
+2. Connect your GitHub repository.
+3. Add `GROQ_API_KEY` to the Space **Secrets**.
+4. The app will automatically build and run.
+
+## 💡 Hackathon Demo Tips
+- **Unified Flow**: Streamlit provides a seamless experience for uploading notes, learning, and testing in one place.
+- **RAG & FAISS**: Your documents are indexed locally for fast, contextual retrieval.
+- **Adaptive Learning**: The LLM adjusts the lesson depth based on your queries and performance history.
