@@ -7,3 +7,9 @@ python-dotenv
 requests
 numpy
 openai
+gTTS
+audio-recorder-streamlit
+pytesseract
+Pillow
+openai-whisper
+pinecone-client
