@@ -13,4 +13,4 @@ audio-recorder-streamlit
 pytesseract
 Pillow
 openai-whisper
-pinecone-client
+pinecone
