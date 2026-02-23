@@ -1,6 +1,3 @@
-# database.py
-
-```python
 import sqlite3
 import os
 
@@ -23,7 +20,7 @@ def init_db():
             topic TEXT NOT NULL,
             score INTEGER,
             total_questions INTEGER,
-            level TEXT,          -- beginner, intermediate, advanced
+            level TEXT,
             timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
         )
     ''')
@@ -132,7 +129,6 @@ def get_performance_history():
 def get_achievements():
     """
     Return list of earned achievements (newest first)
-    Optional helper function - not used in original code but useful for dashboard
     """
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()

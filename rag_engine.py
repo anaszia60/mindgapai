@@ -9,7 +9,7 @@ import json
 
 # Optional Pinecone
 try:
-    from pinecone import Pinecone, ServerlessSpec
+    from pinecone import Pinecone
     PINECONE_AVAILABLE = True
 except ImportError:
     PINECONE_AVAILABLE = False
@@ -28,12 +28,13 @@ use_pinecone = PINECONE_AVAILABLE and bool(os.getenv("PINECONE_API_KEY"))
 if use_pinecone:
     pc = Pinecone(api_key=os.getenv("PINECONE_API_KEY"))
     index_name = "mindgap-index"
-    if index_name not in pc.list_indexes().names():
+    existing_indexes = [index.name for index in pc.list_indexes()]
+    if index_name not in existing_indexes:
         pc.create_index(
             name=index_name,
             dimension=384,
             metric='cosine',
-            spec=ServerlessSpec(cloud='aws', region='us-east-1')
+            spec={'serverless': {'cloud': 'aws', 'region': 'us-east-1'}}
         )
     vector_index = pc.Index(index_name)
 else:
@@ -116,16 +117,19 @@ User message: {prompt}
 Respond naturally, helpfully and educationally. Keep explanations clear and adapt to the student's level.
 """
 
-        resp = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
-            messages=[
-                {"role": "system", "content": "You are MindGap AI – friendly, adaptive learning assistant."},
-                {"role": "user", "content": full_prompt}
-            ],
-            temperature=0.7,
-            max_tokens=1200
-        )
-        return resp.choices[0].message.content.strip()
+        try:
+            resp = client.chat.completions.create(
+                model="llama-3.3-70b-versatile",
+                messages=[
+                    {"role": "system", "content": "You are MindGap AI – friendly, adaptive learning assistant."},
+                    {"role": "user", "content": full_prompt}
+                ],
+                temperature=0.7,
+                max_tokens=1200
+            )
+            return resp.choices[0].message.content.strip()
+        except Exception as e:
+            return f"I apologize, but I'm having trouble connecting to the AI service. Error: {str(e)}\n\nPlease check your GROQ_API_KEY in the .env file and ensure it's valid."
 
     def generate_quiz(self, topic, context="", profile={}):
         prompt = f"""Based on topic '{topic}' and context:\n{context}
@@ -139,12 +143,13 @@ Each question must have:
 
 Output **only** valid JSON array, nothing else.
 """
-        resp = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
-            messages=[{"role": "user", "content": prompt}],
-            temperature=0.4
-        )
         try:
+            resp = client.chat.completions.create(
+                model="llama-3.3-70b-versatile",
+                messages=[{"role": "user", "content": prompt}],
+                temperature=0.4
+            )
             return json.loads(resp.choices[0].message.content)
-        except:
+        except Exception as e:
+            print(f"Quiz generation error: {e}")
             return []
