@@ -8,7 +8,7 @@ python-dotenv
 requests
 numpy
 openai
-gtts
+gTTS==2.5.1
 audio-recorder-streamlit
 pytesseract
 Pillow
