@@ -1,5 +1,4 @@
-flask
-flask-cors
+streamlit
 faiss-cpu
 sentence-transformers
 PyPDF2
@@ -7,4 +6,3 @@ python-dotenv
 requests
 numpy
 openai
-gunicorn
