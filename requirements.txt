@@ -1,4 +1,8 @@
-streamlit
+
+## 2. requirements.txt
+
+```txt
+streamlit>=1.38.0
 faiss-cpu
 sentence-transformers
 PyPDF2
@@ -6,3 +10,11 @@ python-dotenv
 requests
 numpy
 openai
+pinecone-client
+pytesseract
+pillow
+openai-whisper
+gtts
+pydub
+ffmpeg-python
+streamlit-audiorec
