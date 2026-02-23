@@ -1,16 +1,9 @@
-streamlit>=1.38.0
-faiss-cpu
+streamlit==1.31.0
+torch --index-url https://download.pytorch.org/whl/cpu
 sentence-transformers
+faiss-cpu
 PyPDF2
 python-dotenv
 requests
 numpy
 openai
-pinecone
-pytesseract
-pillow
-openai-whisper
-gtts
-pydub
-ffmpeg-python
-audio-recorder-streamlit
