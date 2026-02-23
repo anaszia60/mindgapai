@@ -1,3 +1,9 @@
+# Updated MindGap AI files with voice-to-voice conversation
+# (using Whisper for STT + gTTS for TTS + streamlit-audiorec)
+
+## 1. README.md
+
+```markdown
 ---
 title: MindGap AI
 emoji: 🧠
@@ -7,27 +13,25 @@ sdk: streamlit
 pinned: false
 ---
 
-# MindGap AI - Adaptive Learning Companion
+# MindGap AI - Adaptive Learning Companion with Voice Chat
 
-MindGap AI detects knowledge gaps and generates personalized micro-lessons using RAG, APIs, and Streamlit. Now with Pinecone for vector search, OCR for images, adaptive prompts, and gamification.
+Detects knowledge gaps, generates personalized micro-lessons and supports **voice-to-voice conversation** using free models.
 
 ## Tech Stack
-- **Frontend/Backend**: Streamlit
-- **Vector Search**: Pinecone API (hybrid search)
-- **Embeddings**: Sentence-Transformers (`all-MiniLM-L6-v2`)
-- **LLM**: Groq API (`llama-3.3-70b-versatile`)
-- **Database**: SQLite
-- **OCR**: Pytesseract (for images)
-- **Other**: Adaptive learning via API prompts
+- Frontend/Backend: Streamlit
+- Vector DB: FAISS (local) or Pinecone (optional)
+- Embeddings: sentence-transformers/all-MiniLM-L6-v2
+- LLM: Groq (llama-3.3-70b-versatile)
+- STT: openai-whisper (base model)
+- TTS: gTTS (Google Translate TTS)
+- Voice recording: st-audiorec component
+- Database: SQLite
+- OCR: pytesseract (images)
 
-## 📂 Project Structure
-- `app.py`: Main app.
-- `rag_engine.py`: RAG with Pinecone.
-- `database.py`: SQLite for tracking.
-- `requirements.txt`: Dependencies.
+## Quick Start (Local)
 
-## 🚀 Quick Start (Local)
+```bash
+# Install system dependencies (important for whisper & audio)
+sudo apt update && sudo apt install -y ffmpeg tesseract-ocr libtesseract-dev
 
-1. **Install Dependencies**:
-   ```bash
-   pip install -r requirements.txt
+pip install -r requirements.txt
